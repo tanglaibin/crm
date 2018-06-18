@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+
+	<class name="tj.tlbljj.domain.Usercus" table="usercust">
+		<id name="visit_id" column="visit_id">
+			<generator class="uuid"/>
+		</id>
+		
+		<property name="visit_time" column="visit_time"/>
+		<property name="visit_interviewee" column="visit_interviewee"/>
+		<property name="visit_addr" column="visit_addr"/>
+		<property name="visit_detail" column="visit_detail"/>
+		<property name="visit_nexttime" column="visit_nexttime"/>
+		
+		<!-- 多对一 配置-->
+		<many-to-one name="customer" class="tj.tlbljj.domain.Customer" column="usercustcustid"></many-to-one>
+		<many-to-one name="user" class="tj.tlbljj.domain.User" column="usercustuserid"></many-to-one>
+
+	</class>
+	
+</hibernate-mapping>    

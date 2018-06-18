@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	
+<struts>
+	<constant name="struts.multipart.maxSize" value="2097152000"></constant>
+	<!-- 先配置包结构 -->
+	<package name="crm2" extends="struts-default" namespace="/">
+	
+	<!-- <interceptors>
+	<interceptor name="userInterceptor" class="ljj.tlb.interceptor.UserInterceptor"></interceptor>
+	</interceptors> -->
+	
+	 <!-- 配置全局的结果页面 -->
+		<global-results>
+			<result name="login" type="redirect">/login.jsp</result>
+		</global-results>
+	
+	    <!-- 用户模块 -->
+		<action name="user_*" class="useraction" method="{1}">
+		<result name="index">/index.jsp</result>
+		</action>	
+		
+		
+		 <!-- 客户模块 -->
+		<action name="customer_*" class="cusaction" method="{1}">
+		<result name="page" >/jsp/customer/list.jsp</result>
+		<result name="page2" type="redirectAction">customer_findbypage.action</result>
+		<result name="edit" >/jsp/customer/edit.jsp</result>
+		
+		<!-- <interceptor-ref name="userInterceptor"/> -->
+		<interceptor-ref name="defaultStack">
+		<param name="fileUpload.allowedExtensions">.jpg,.txt,.png,.pdf,.mp4,.flv</param>
+		</interceptor-ref>
+		
+		</action>	
+		
+		 <!-- 字典模块 -->
+		<action name="dict_*" class="dictaction" method="{1}">
+		</action>	
+		
+		 <!-- 联系人模块 -->
+		<action name="link_*" class="linkaction" method="{1}">
+		<result name="linkpage">/jsp/linkman/list.jsp</result>
+		<result name="linkpage2" type="redirectAction">link_findbypage.action</result>
+		<result name="editui">/jsp/linkman/edit.jsp</result>
+		</action>	
+		
+		<!-- 用户拜访模块 -->
+		<action name="usercus_*" class="usercusaction" method="{1}">
+		<result name="usercuspage">/jsp/usercust/list.jsp</result>
+		<result name="page2" type="redirectAction">usercus_findbypage.action</result>
+		</action>	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!-- 客户模块 
+		<action name="customer_*" class="customerAction" method="{1}">
+		<result name="page" >/jsp/customer/list.jsp</result>
+		<result name="addui" >/jsp/customer/add.jsp</result>
+		<result name="save" type="redirectAction">customer_findbypage.action</result>
+		<result name="delete" type="redirectAction">customer_findbypage.action</result>
+		<result name="update" >/jsp/customer/edit.jsp</result>
+		<result name="updatee" type="redirectAction">customer_findbypage.action</result>
+		<result name="findbysource" >/tongji/source.jsp</result>
+		
+		<interceptor-ref name="userInterceptor"/>
+		<interceptor-ref name="defaultStack">
+		<param name="fileUpload.allowedExtensions">.jpg,.txt,.png,.pdf</param>
+		</interceptor-ref>
+		
+		</action>	-->
+		
+		<!-- 字典模块 
+		<action name="dict_*" class="dictAction" method="{1}"></action>	-->
+		
+		<!-- 联系人模块 
+		<action name="linkman_*" class="linkmanAction" method="{1}">
+		<result name="page">/jsp/linkman/list.jsp</result>
+		<interceptor-ref name="userInterceptor"/>
+		<interceptor-ref name="defaultStack"/>
+		</action>	-->
+		
+		<!-- 客户拜访模块 
+		<action name="salevisit_*" class="salevisitaction" method="{1}">
+		<result name="page" >/jsp/visit/list.jsp</result>
+		<result name="save" type="redirectAction">salevisit_findbypage.action</result>
+		<interceptor-ref name="userInterceptor"/>
+		<interceptor-ref name="defaultStack"/>
+		</action>	-->
+		
+		
+	</package>
+</struts>
